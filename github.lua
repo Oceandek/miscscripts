@@ -11,6 +11,7 @@ local player = game.Players.LocalPlayer
 local username = player.Name
 local leaderstats = player.leaderstats
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ranks = require(game:GetService("ReplicatedStorage").Library.Directory.Ranks)
 
 local Save = require(game:GetService("ReplicatedStorage").Library.Client.Save)
 
@@ -29,11 +30,15 @@ end
 
 local function claimrank()
     local totalStars = 0
-    for i,v in require(game:GetService("ReplicatedStorage").Library.Directory.Ranks)[rankCmds.GetTitle()]["Rewards"] do
-        totalStars += v["StarsRequired"]
-        if Save()["RankStars"] >= totalStars and not Save()["RedeemedRankRewards"][tostring(i)] then
-            network.Fire("Ranks_ClaimReward", i)
-            task.wait(.5)
+    for i,v in ranks do
+        if v["RankNumber"] == save()["Rank"] then
+            for i2, v2 in v["Rewards"] do
+                totalStars += v2["StarsRequired"]
+                if Save()["RankStars"] >= totalStars and not Save()["RedeemedRankRewards"][tostring(i2)] then
+                    network.Fire("Ranks_ClaimReward", i2)
+                    task.wait(.5)
+                end
+            end
         end
     end
 end
