@@ -137,10 +137,13 @@ local function updateUser()
 
     local Miscinv = Save.Get()["Inventory"]["Misc"]
     local petCubeCount = 0
+    local ultraPetCubeCount = 0
     
     for _, item in pairs(Miscinv) do
         if item.id == "Pet Cube" then  
             petCubeCount = petCubeCount + item._am  
+        elseif item.id == "Ultra Pet Cube" then
+            ultraPetCubeCount = ultraPetCubeCount + item._am
         end
     end
     
@@ -174,7 +177,8 @@ local function updateUser()
             totalgems = OK,
             totalRap = currentRap,
             rapPerMin = rapPerMinFormatted, 
-            petCubeCount = petCubeCount
+            petCubeCount = petCubeCount,
+            ultraPetCubeCount = ultraPetCubeCount
  
 
         })
@@ -212,4 +216,3 @@ while wait(60) do
         print("Finished claiming mail")
     end)
 end
-
