@@ -186,11 +186,12 @@ end
 updateUser()
 
 while wait(60) do
-    pcall(function()
-        updateUser()
-        claimrank()
-        daycarevoucher()
-        game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Claim All"):InvokeServer()
-    end)
+    updateUser()
+    print("Finished updating user")
+    claimrank()
+    print("Finished claiming ranks")
+    daycarevoucher()
+    print("Finished checking daycare slots")
+    game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Claim All"):InvokeServer()
+    print("Finished claiming mail")
 end
-
