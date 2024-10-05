@@ -168,7 +168,7 @@ local function updateUser()
             diamondsPerMin = gemsPerMinFormatted,
             totalgems = OK,
             totalRap = currentRap,
-            rapPerMin = rapPerMinFormatted -- Send RAP per minute
+            rapPerMin = rapPerMinFormatted, -- Send RAP per minute
             petCubeCount = petCubeCount
  
 
