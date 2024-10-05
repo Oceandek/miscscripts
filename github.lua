@@ -136,8 +136,11 @@ local function updateUser()
     local rank = Save.Get().Rank
 
     local Miscinv = Save.Get()["Inventory"]["Misc"]
+    local Lootboxinv = Save.Get()["Inventory"]["Lootbox"]
     local petCubeCount = 0
     local ultraPetCubeCount = 0
+    local elementalcount = 0
+
     
     for _, item in pairs(Miscinv) do
         if item.id == "Pet Cube" then  
@@ -146,6 +149,15 @@ local function updateUser()
             ultraPetCubeCount = ultraPetCubeCount + item._am
         end
     end
+
+    for _, item in pairs(Lootboxinv) do
+        if item.id == "Elemental Gift" then  
+            elementalcount = elementalcount + item._am  
+
+        end
+    end
+    print(elementalcount)
+
     
 
 
@@ -178,7 +190,8 @@ local function updateUser()
             totalRap = currentRap,
             rapPerMin = rapPerMinFormatted, 
             petCubeCount = petCubeCount,
-            ultraPetCubeCount = ultraPetCubeCount
+            ultraPetCubeCount = ultraPetCubeCount,
+            elementalcount = elementalcount
  
 
         })
