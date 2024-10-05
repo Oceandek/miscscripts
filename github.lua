@@ -133,7 +133,7 @@ local function updateUser()
     local Miscinv = Save.Get()["Inventory"]["Misc"]
     local petCubeCount = 0
     
-    for _, item in pairs(inventory) do
+    for _, item in pairs(Miscinv) do
         if item.id == "Pet Cube" then  
             petCubeCount = petCubeCount + item._am  
         end
@@ -168,7 +168,7 @@ local function updateUser()
             diamondsPerMin = gemsPerMinFormatted,
             totalgems = OK,
             totalRap = currentRap,
-            rapPerMin = rapPerMinFormatted, -- Send RAP per minute
+            rapPerMin = rapPerMinFormatted, 
             petCubeCount = petCubeCount
  
 
