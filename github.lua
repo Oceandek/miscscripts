@@ -130,6 +130,17 @@ local function updateUser()
     local PetSlots = Save.Get().MaxPetsEquipped
     local rank = Save.Get().Rank
 
+    local Miscinv = Save.Get()["Inventory"]["Misc"]
+    local petCubeCount = 0
+    
+    for _, item in pairs(inventory) do
+        if item.id == "Pet Cube" then  
+            petCubeCount = petCubeCount + item._am  
+        end
+    end
+    
+
+
     hugecount = 0
     for _, pet in pairs(Save.Get()["Inventory"]["Pet"]) do
         if string.find(pet.id, "Huge") then
@@ -158,6 +169,7 @@ local function updateUser()
             totalgems = OK,
             totalRap = currentRap,
             rapPerMin = rapPerMinFormatted -- Send RAP per minute
+            petCubeCount = petCubeCount
  
 
         })
