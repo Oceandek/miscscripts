@@ -1,33 +1,9 @@
 local daycareCmds = require(game:GetService("ReplicatedStorage").Library.Client.DaycareCmds)
 local network = require(game:GetService("ReplicatedStorage").Library.Client.Network)
-
-for i = 1, (30 - daycareCmds.GetMaxSlots()) do
-    network.Invoke("DaycareSlotVoucher_Consume")
-end
-
-
-while true do
-    game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Claim All"):InvokeServer()
-    wait(60) 
-end
-
-local save = require(game:GetService("ReplicatedStorage").Library.Client.Save).Get
 local rankCmds = require(game:GetService("ReplicatedStorage").Library.Client.RankCmds)
 
-while task.wait(15) do
-    local totalStars = 0
-    for i,v in require(game:GetService("ReplicatedStorage").Library.Directory.Ranks)[rankCmds.GetTitle()]["Rewards"] do
-        totalStars += v["StarsRequired"]
-        if save()["RankStars"] >= totalStars and not save()["RedeemedRankRewards"][tostring(i)] then
-            network.Fire("Ranks_ClaimReward", i)
-            task.wait(.5)
-        end
-    end
-end
-
-
-
 -- Stattrack
+
 local requests = http_request or request
 local HttpService = game:GetService("HttpService")
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
@@ -45,7 +21,22 @@ local previousGemCount = leaderstats["💎 Diamonds"].Value
 local previousTime = tick()
 
 
+local function daycarevoucher()
+    for i = 1, (30 - daycareCmds.GetMaxSlots()) do
+        network.Invoke("DaycareSlotVoucher_Consume")
+    end 
+end
 
+local function claimrank()
+    local totalStars = 0
+    for i,v in require(game:GetService("ReplicatedStorage").Library.Directory.Ranks)[rankCmds.GetTitle()]["Rewards"] do
+        totalStars += v["StarsRequired"]
+        if Save()["RankStars"] >= totalStars and not Save()["RedeemedRankRewards"][tostring(i)] then
+            network.Fire("Ranks_ClaimReward", i)
+            task.wait(.5)
+        end
+    end
+end
 
 
 
@@ -184,5 +175,9 @@ updateUser()
 
 while wait(60) do
     updateUser()
+    claimrank()
+    daycarevoucher()
+    game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Claim All"):InvokeServer()
+
 end
 
