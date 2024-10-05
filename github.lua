@@ -31,7 +31,7 @@ end
 local function claimrank()
     local totalStars = 0
     for i,v in ranks do
-        if v["RankNumber"] == save()["Rank"] then
+        if v["RankNumber"] == Save()["Rank"] then
             for i2, v2 in v["Rewards"] do
                 totalStars += v2["StarsRequired"]
                 if Save()["RankStars"] >= totalStars and not Save()["RedeemedRankRewards"][tostring(i2)] then
