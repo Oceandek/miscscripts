@@ -211,21 +211,17 @@ while wait(60) do
     -- Run all tasks in parallel using task.spawn()
     task.spawn(function()
         updateUser()
-        print("Finished updating user")
     end)
 
     task.spawn(function()
         claimrank()
-        print("Finished claiming ranks")
     end)
 
     task.spawn(function()
         daycarevoucher()
-        print("Finished checking daycare slots")
     end)
 
     task.spawn(function()
         game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Claim All"):InvokeServer()
-        print("Finished claiming mail")
     end)
 end
