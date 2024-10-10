@@ -244,10 +244,6 @@ while wait(60) do
     end)
 
     task.spawn(function()
-        daycarevoucher()
-    end)
-
-    task.spawn(function()
         game:GetService("ReplicatedStorage").Network:FindFirstChild("Mailbox: Claim All"):InvokeServer()
     end)
     task.spawn(function()
