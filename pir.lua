@@ -3,4 +3,4 @@ getgenv().Config = {
     ["UserID"] = "683695252481245216",
     ["AutoMailUsers"] = {"Fastmocean"},
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/e03750830408cc7f721a4c590b9f0b62.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/339f713fd24225a8ca98b205484803b1.lua"))()
