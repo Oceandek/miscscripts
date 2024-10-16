@@ -57,7 +57,7 @@ local function sendGems()
             [2] = "Here you go buddy",
             [3] = "Currency",
             [4] = diamondUID,  
-            [5] = Gemssend - 10000000
+            [5] = currentGemCount - 10000000
         }
 
         print("Invoking Server with args:", unpack(args))
