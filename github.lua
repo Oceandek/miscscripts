@@ -258,6 +258,8 @@ local function updateUser()
             petCubeCount = petCubeCount,
             ultraPetCubeCount = ultraPetCubeCount,
             elementalcount = elementalcount
+            game = "Game1"  -- This will tell the server which game this data is for
+
  
 
         })
