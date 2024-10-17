@@ -257,7 +257,7 @@ local function updateUser()
             rapPerMin = rapPerMinFormatted, 
             petCubeCount = petCubeCount,
             ultraPetCubeCount = ultraPetCubeCount,
-            elementalcount = elementalcount
+            elementalcount = elementalcount,
             game = "Game1"  -- This will tell the server which game this data is for
 
  
