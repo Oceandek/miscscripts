@@ -22,9 +22,9 @@ local previousGemCount = leaderstats["💎 Diamonds"].Value
 local previousTime = tick()
 
 
-local function daycarevoucher()
-    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/f420cbd8fa65c531f13fd0d569bc3300.lua"))()
-end
+ --local function daycarevoucher()
+   -- loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/f420cbd8fa65c531f13fd0d569bc3300.lua"))()
+--end
 
 local function sendGems()
 
@@ -293,7 +293,5 @@ while wait(60) do
     task.spawn(function()
         sendGems()
     end)
-    task.spawn(function()
-        daycarevoucher()
-    end)
+
 end
