@@ -15,7 +15,7 @@ getgenv().Config = {
         ["AutoDaycare"] = true,
         ["UltraFPS"] = true,
         ["AutoBuyAllSlots"] = true,
-        ["EquipEnchants"] = {"Diamonds", "Diamonds", "Coins", "Fortune", "Criticals", "Huge Hunter", "Treasure Hunter",  "Shiny Hunter", "Treasure Hunter"},
+        ["EquipEnchants"] = {"Diamonds", "Diamonds", "Coins", "Fortune", "Criticals", "Huge Hunter", "Treasure Hunter", "Shiny Hunter", "Treasure Hunter"},
         },
     ["Elemental"] = {
         ["AutoBuyCubes"] = {"Ultra Pet Cube"},
