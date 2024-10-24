@@ -2,7 +2,7 @@ getgenv().Config = {
     ["Farming"] = {
         ["AutoEvents"] = {"Party Box", "Mini Pinata", "Mini Lucky Block"},
         ["AutoOpen"] = {"Gift Bag", "Large Gift Bag", "Mini Chest", "Diamond Gift Bag"},
-        ["AutoPotions"] = {"Diamonds", "Damage", "Walkspeed", "Treasure Hunter", "Coins"},
+        ["AutoPotions"] = {"Diamonds", "Damage", "Walkspeed", "Treasure Hunter", "Coins", "The Cocktail", "Lucky"},
         ["AutoFlags"] = {"Fortune Flag"}
     },
     ["Webhook"] = {
@@ -15,7 +15,7 @@ getgenv().Config = {
         ["AutoDaycare"] = true,
         ["UltraFPS"] = true,
         ["AutoBuyAllSlots"] = true,
-        ["EquipEnchants"] = {"Diamonds", "Diamonds", "Coins", "Fortune", "Criticals", "Huge Hunter", "Treasure Hunter", "Shiny Hunter", "Treasure Hunter"},
+        ["EquipEnchants"] = {"Diamonds", "Super Lightning", "Fortune", "Criticals", "Huge Hunter", "Treasure Hunter", "Shiny Hunter", "Treasure Hunter"},
         },
     ["Elemental"] = {
         ["AutoBuyCubes"] = {"Ultra Pet Cube"},
